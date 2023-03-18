@@ -20,17 +20,6 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'spring-boot:build-image'
-    publishJUnitResults: false
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.17'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
 - task: Docker@2
   inputs:
     containerRegistry: 'docker'
@@ -39,4 +28,5 @@ steps:
   inputs:
     containerRegistry: 'docker'
     repository: 'jitudocker007 / azuredevops'
-    command: 'push'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
