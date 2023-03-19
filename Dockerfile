@@ -1,6 +1,4 @@
-FROM tomcat:latest
+FROM openjdk:17-jdk-slim-buster
 ADD ./target/*.war /usr/local/tomcat/webapps
-EXPOSE 9090
-CMD ["catalina.sh" ,"run"]
-
+ENTRYPOINT ["java", "-jar", "*.war"]
 
