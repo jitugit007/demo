@@ -1,3 +1,6 @@
 FROM tomcat:latest
-COPY ./target/*.war /usr/local/tomcat/webapps
-RUN cp -r /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+ADD ./target/*.war /usr/local/tomcat/webapps
+EXPOSE 9090
+CMD ["catalina.sh" ,"run"]
+
+
